@@ -1,249 +1,173 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { useInViewport } from 'react-in-viewport';
 import Image from 'next/image';
-import useClientSide from '../../../hooks/useClientSide';
 import introStyle from '../intro.module.scss';
+import useClientSide from '../../../hooks/useClientSide';
 
-// Import images
-import koshik41 from '/assets/images/koshik_41.png';
-import botas4 from '/assets/images/botas_4.png';
-import botas1 from '/assets/images/botas_1.png';
-import botas2 from '/assets/images/botas_2.png';
-import botas3 from '/assets/images/botas_3.png';
-import koshik5 from '/assets/images/koshik5.png';
-import koshik012 from '/assets/images/koshik_012.png';
+// Import images (только нужные)
+import medicineImg from '/assets/images/koshik_41.png';
+import pharmaImg from '/assets/images/botas_4.png';
+import treatmentImg from '/assets/images/botas_1.png';
 
-const Intro = () => {
+const Intro: React.FC = () => {
   const isClientSide = useClientSide();
-  const refCaptionBox = useRef<HTMLDivElement>(null);
-  const refTiktok = useRef<HTMLDivElement>(null);
-  const refTwich = useRef<HTMLDivElement>(null);
-  const refYoutube = useRef<HTMLDivElement>(null);
-  const refButtonBox = useRef<HTMLDivElement>(null);
-  const refGiftBox = useRef<HTMLDivElement>(null);
-  const { enterCount: enterCountCaptionBox } = useInViewport(refCaptionBox);
-  const { enterCount: enterCountTiktok } = useInViewport(refTiktok);
-  const { enterCount: enterCountTwich } = useInViewport(refTwich, { threshold: [0.1] });
-  const { enterCount: enterCountYoutube } = useInViewport(refYoutube);
-  const { enterCount: enterCountButtonBox } = useInViewport(refButtonBox);
-  const { enterCount: enterCountGiftBox } = useInViewport(refGiftBox);
+  const [isAnimated, setIsAnimated] = useState(false);
+  
+  // Один реф для всей секции
+  const sectionRef = useRef<HTMLElement>(null);
+  const { inViewport } = useInViewport(sectionRef, { threshold: 0.2 });
+
+  useEffect(() => {
+    if (inViewport && !isAnimated) {
+      setIsAnimated(true);
+    }
+  }, [inViewport, isAnimated]);
 
   return (
-    <section className={introStyle.intro}>
-      <div className="intro__container container">
-        <h2 className="intro__heading">
-          ՆՈՐԱԳՈՒՅՆ
-          <span className="intro__heading-span-1">ԴԵՂՈՐԱՅՔ</span>
-          <span className="intro__heading-span-2">
-            ՄԱՏՉԵԼԻ &nbsp;&nbsp; ԳՆԵՐՈՎ
+    <section 
+      ref={sectionRef}
+      className={classNames(introStyle.intro, {
+        [introStyle.animated]: isAnimated
+      })}
+    >
+      <div className={introStyle.intro__container}>
+        
+        {/* Главный заголовок */}
+        <div className={classNames(introStyle.intro__heading, introStyle.intro__animated)}>
+          <span className={introStyle['intro__heading-span-1']}>
+            ՆՈՐԱԳՈՒՅՆ ԴԵՂՈՐԱՅՔ
           </span>
-          {isClientSide && (
-            <div
-              className={classNames('intro__bg-tiktok', {
-                triggered: enterCountTiktok > 0,
-              })}
-              ref={refTiktok}
-            >
-              <Image
-                src={koshik41}
-                alt="medicine"
-                width={150}
-                height={150}
-                quality={75}
-                priority={false}
-              />
+          <span className={introStyle['intro__heading-span-2']}>
+            ՄԱՏՉԵԼԻ ԳՆԵՐՈՎ
+          </span>
+        </div>
+
+        {/* Основной контент */}
+        <div className={classNames(introStyle.intro__content, introStyle.intro__animated)}>
+          
+          {/* Левая колонка - Статистика */}
+          <div className={introStyle['intro__weeks-box']}>
+            <div className={introStyle.intro__weeks}>
+              Սերտիֆիկացված
             </div>
-          )}
-          {isClientSide && (
-            <div
-              className={classNames('intro__bg-twich', {
-                triggered: enterCountTwich > 0,
-              })}
-              ref={refTwich}
-            >
-              <Image
-                src={botas4}
-                alt="pharma"
-                width={150}
-                height={150}
-                quality={75}
-                priority={false}
-              />
-            </div>
-          )}
-          {isClientSide && (
-            <div
-              className={classNames('intro__bg-youtube', {
-                triggered: enterCountYoutube > 0,
-              })}
-              ref={refYoutube}
-            >
-              <Image
-                src={botas1}
-                alt="treatment"
-                width={150}
-                height={150}
-                quality={75}
-                priority={false}
-              />
-            </div>
-          )}
-        </h2>
-
-        {isClientSide && (
-          <div
-            className={classNames('intro__caption-box', {
-              triggered: enterCountCaptionBox > 0,
-            })}
-            ref={refCaptionBox}
-          >
-            <span className="intro__caption-text">
-              ՄԻՋԱԶԳԱՅԻՆ ՈՐԱԿ <br /> ԵՎ ԵՐԱՇԽԻՔ
-            </span>
-
-            <span className="intro__caption-title">
-              ԱՐԴՅՈՒՆԱՎԵՏ ԵՎ
-              <span className="intro__caption-paragraph-small">
-                ԱՆՎՏԱՆԳ ԲՈՒԺՈՒՄ
-              </span>
-            </span>
-
-            <span className="intro__caption-text">
-              ԼԱՅ ՏԵՍԱԿԱՆԻ <br />
-              <span className="intro__caption-paragraph">
-                ՀԱԿԱՔԱՂՑԿԵՂԱՅԻՆ ԴԵՂԱՄԻջՈՑՆԵՐ
-              </span>
-            </span>
-
-            <div className="intro__bg-monitor">
-              <Image
-                src={botas2}
-                alt="medical"
-                width={350}
-                height={350}
-                quality={75}
-                priority={false}
-              />
+            <div className={introStyle['intro__weeks-text']}>
+              դեղամիջոցներ
             </div>
           </div>
-        )}
 
-        <div className="intro__caption-box_mob">
-          {isClientSide && (
-            <div
-              className={classNames('intro__caption-text_wrapper', {
-                triggered: enterCountGiftBox > 0,
-              })}
-              ref={refGiftBox}
+          {/* Центральная колонка - Кнопка */}
+          <div className={introStyle['intro__button-block']}>
+            <a 
+              href="https://degh.am" 
+              className={introStyle.intro__button}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <div className="intro__caption-text_mob">
-                ՀՈՒՍԱԼԻՈՒԹՅՈՒՆ
-                <span>
-                  ԲԱՐՁՐՈՐԱԿ ԴԵՂԱՄԻՋՈՑՆԵՐԻ ՆԵՐՄՈՒԾՈՒՄ
-                </span>
-              </div>
-            </div>
-          )}
-          <div className="intro-caption-text2_mob">
-            Առողջություն և որակյալ կյանք յուրաքանչյուր հիվանդի համար
-          </div>
-
-          <div className="intro__button-block">
-            <a href="https://degh.am" className="intro__button">
               ՊԱՏՎԻՐԵԼ ՀԻՄԱ
             </a>
-            <p className="intro__button-caption">
+            <div className={introStyle['intro__button-caption']}>
               ԱՆՎՃԱՐ ԽՈՐՀՐԴԱՏՎՈՒԹՅՈՒՆ
-            </p>
+            </div>
           </div>
 
-          <div className="intro__span-wrapper">
-            <div className="intro__weeks-box">
-              <span className="intro__weeks">
-                Սերտիֆիկացված
-              </span>
-              <p className="intro__weeks-text">դեղամիջոցներ</p>
+          {/* Правая колонка - Статистика */}
+          <div className={introStyle['intro__lessons-box']}>
+            <div className={introStyle.intro__lessons}>
+              Միջազգային չափանիշներ
             </div>
-
-            <div className="intro__lessons-box">
-              <span className="intro__lessons">Միջազգային չափանիշներ</span>
-              <p className="intro__lessons-text">Եվրոպական որակ</p>
-            </div>
-
-            <div className="intro__lessons-box">
-              <span className="intro__lessons">
-                Մասնագիտական
-              </span>
-              <p className="intro__lessons-text">
-                Աջակցություն 24/7
-              </p>
+            <div className={introStyle['intro__lessons-text']}>
+              Եվրոպական որակ
             </div>
           </div>
         </div>
-        {isClientSide && (
-          <div
-            className={classNames('intro__button-box', {
-              triggered: enterCountButtonBox > 0,
-            })}
-            ref={refButtonBox}
-          >
-            <div className="intro__weeks-box">
-              <span className="intro__weeks">
-                միջազգային չափանիշներ
-              </span>
-              <p className="intro__weeks-text">Եվրոպական որակ</p>
+
+        {/* Описание */}
+        <div className={classNames(introStyle.intro__description, introStyle.intro__animated)}>
+          <h3 className={introStyle['intro__description-title']}>
+            ՄԻՋԱԶԳԱՅԻՆ ՈՐԱԿ ԵՎ ԵՐԱՇԽԻՔ
+          </h3>
+          <p className={introStyle['intro__description-text']}>
+            ԱՐԴՅՈՒՆԱՎԵՏ ԵՎ ԱՆՎՏԱՆԳ ԲՈՒԺՈՒՄ
+          </p>
+          <p className={introStyle['intro__description-text']}>
+            ԼԱՅ ՏԵՍԱԿԱՆԻ ՀԱԿԱՔԱՂՑԿԵՂԱՅԻՆ ԴԵՂԱՄԻջՈՑՆԵՐ
+          </p>
+          <p className={introStyle['intro__description-text']}>
+            Առողջություն և որակյալ կյանք յուրաքանչյուր հիվանդի համար
+          </p>
+        </div>
+
+        {/* Дополнительные преимущества для мобильных */}
+        <div className={classNames(introStyle['intro__mobile-features'], introStyle.intro__animated)}>
+          <div className={introStyle['intro__feature-item']}>
+            <div className={introStyle['intro__feature-title']}>
+              ՀՈՒՍԱԼԻՈՒԹՅՈՒՆ
             </div>
-            <div className="intro__button-block">
-              <a href="https://degh.am" className="intro__button">
-                ՊԱՏՎԻՐԵԼ ՀԻՄԱ
-              </a>
-              <p className="intro__button-caption">
-                ԱՆՎՃԱՐ ԽՈՐՀՐԴԱՏՎՈՒԹՅՈՒՆ
-              </p>
-            </div>
-            <div className="intro__lessons-box">
-              <span className="intro__lessons">
-                մասնագիտական
-              </span>
-              <p className="intro__lessons-text">
-                աջակցություն 24/7
-              </p>
+            <div className={introStyle['intro__feature-text']}>
+              ԲԱՐՁՐՈՐԱԿ ԴԵՂԱՄԻՋՈՑՆԵՐԻ ՆԵՐՄՈՒԾՈՒՄ
             </div>
           </div>
+          
+          <div className={introStyle['intro__feature-item']}>
+            <div className={introStyle['intro__feature-title']}>
+              Մասնագիտական
+            </div>
+            <div className={introStyle['intro__feature-text']}>
+              Աջակցություն 24/7
+            </div>
+          </div>
+        </div>
+
+        {/* Декоративные элементы (упрощенные) */}
+        {isClientSide && isAnimated && (
+          <>
+            <div className={classNames(
+              introStyle.intro__decoration, 
+              introStyle['intro__decoration--tiktok']
+            )}>
+              <Image
+                src={medicineImg}
+                alt="medicine"
+                width={60}
+                height={60}
+                quality={75}
+                priority={false}
+                className={introStyle['intro__decoration-img']}
+              />
+            </div>
+
+            <div className={classNames(
+              introStyle.intro__decoration, 
+              introStyle['intro__decoration--youtube']
+            )}>
+              <Image
+                src={pharmaImg}
+                alt="pharma"
+                width={60}
+                height={60}
+                quality={75}
+                priority={false}
+                className={introStyle['intro__decoration-img']}
+              />
+            </div>
+
+            <div className={classNames(
+              introStyle.intro__decoration, 
+              introStyle['intro__decoration--twitch']
+            )}>
+              <Image
+                src={treatmentImg}
+                alt="treatment"
+                width={60}
+                height={60}
+                quality={75}
+                priority={false}
+                className={introStyle['intro__decoration-img']}
+              />
+            </div>
+          </>
         )}
-        <div className="intro__projector-right-top">
-          <Image
-            src={botas3}
-            alt="pharmacy"
-            width={800}
-            height={400}
-            quality={75}
-            priority={false}
-          />
-        </div>
-
-        <div className="intro__lamp">
-          <Image
-            src={koshik5}
-            alt="medical supplies"
-            width={550}
-            height={600}
-            quality={75}
-            priority={false}
-          />
-        </div>
-
-        <div className="intro__projector-right-mob">
-          <Image
-            src={koshik012}
-            alt="treatment"
-            width={350}
-            height={350}
-            quality={75}
-            priority={false}
-          />
-        </div>
       </div>
     </section>
   );

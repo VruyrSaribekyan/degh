@@ -1,47 +1,76 @@
 @import './variables';
 
 .questions {
-  padding: 0 10px 161px;
+  padding: 80px 0 120px;
+  background: linear-gradient(180deg, rgba($light-green, 0.05) 0%, $white 100%);
+  position: relative;
+  overflow: hidden;
 
   :global {
     .questions__container {
       display: flex;
       flex-direction: column;
-      max-width: 1282px;
+      max-width: 1200px;
       width: 100%;
+      margin: 0 auto;
+      padding: 0 20px;
       position: relative;
     }
 
-    .questions__title {
-      font-size: 98px;
-      line-height: 115px;
-      width: 100%;
-      background: -webkit-linear-gradient(
-        rgba(255, 255, 255, 1),
-        rgba(255, 255, 255, 0.52)
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 40px;
-      text-align: center;
+    .questions__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .questions__line {
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, $accent-green, $light-green);
+      margin: 0 auto 40px;
+      border-radius: 2px;
+      box-shadow: 0 2px 8px rgba($accent-green, 0.3);
 
       @media (max-width: 767px) {
-        font-size: 36px;
-        line-height: 36px;
-      }
-
-      @media (min-width: 768px) and (max-width: 1023px) {
-        font-size: 59px;
-        line-height: 69px;
-      }
-
-      @media (min-width: 1024px) and (max-width: 1200px) {
-        font-size: 59px;
-        line-height: 69px;
+        width: 60px;
+        height: 3px;
+        margin-bottom: 30px;
       }
     }
 
+    .questions__title {
+      font-size: 44px;
+      line-height: 1.2;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 60px;
+      color: $dark-green;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+
+      @media (max-width: 767px) {
+        font-size: 26px;
+        margin-bottom: 40px;
+      }
+
+      @media (min-width: 768px) and (max-width: 1023px) {
+        font-size: 36px;
+        margin-bottom: 50px;
+      }
+    }
+
+    .questions__title-span {
+      color: $accent-green;
+      font-weight: 800;
+    }
+
     .questions__list-item {
+      margin-bottom: 15px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
 
     .questions__inner {
@@ -50,103 +79,203 @@
     }
 
     .questions-item {
-      transition: 0.3s;
+      background: $white;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba($dark-green, 0.08);
+      border: 1px solid rgba($light-green, 0.3);
+      transition: all 0.3s ease;
       cursor: pointer;
-      background: transparent;
-      border-bottom: 1px solid rgba(0, 236, 232, 1);
-      box-sizing: border-box;
-      position: relative;
+      overflow: hidden;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba($dark-green, 0.12);
+        border-color: rgba($accent-green, 0.5);
+      }
 
       &.active {
-        border-bottom: 1px solid rgba(0, 236, 232, 1);
+        border-color: $accent-green;
+        box-shadow: 0 8px 25px rgba($accent-green, 0.15);
+      }
+
+      @media (max-width: 767px) {
+        border-radius: 16px;
       }
     }
 
     .questions-item__header {
       display: flex;
       align-items: center;
-      padding: 28px 0;
+      padding: 25px 30px;
       justify-content: space-between;
+      transition: all 0.3s ease;
+
+      @media (max-width: 767px) {
+        padding: 20px 25px;
+      }
 
       span {
         display: flex;
+        align-items: center;
+        justify-content: center;
         width: 40px;
         min-width: 40px;
         height: 40px;
         margin-left: 15px;
-        background: top 15px right calc(50% + 0px)
-            url($slug + 'order-btn-arrow.png') no-repeat,
-          transparent;
-        transition: 0.3s;
-        border-radius: 5px;
-      }
-    }
+        background: rgba($light-green, 0.2);
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        position: relative;
 
-    .questions-item__header.active {
-      span {
-        transform: rotate(180deg);
-        background-color: transparent;
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          background: $accent-green;
+          transition: all 0.3s ease;
+        }
+
+        &::before {
+          width: 14px;
+          height: 2px;
+          border-radius: 1px;
+        }
+
+        &::after {
+          width: 2px;
+          height: 14px;
+          border-radius: 1px;
+        }
+      }
+
+      &.active span {
+        transform: rotate(45deg);
+        background-color: rgba($accent-green, 0.1);
+
+        &::after {
+          opacity: 0;
+        }
+      }
+
+      @media (max-width: 550px) {
+        span {
+          width: 35px;
+          min-width: 35px;
+          height: 35px;
+          margin-left: 10px;
+
+          &::before {
+            width: 12px;
+          }
+
+          &::after {
+            height: 12px;
+          }
+        }
       }
     }
 
     .questions__item-title {
-      font-family: 'Roboto';
-      font-size: 24px;
-      line-height: 28px;
-      font-weight: 500;
-      color: $white;
+      font-family: 'Roboto', sans-serif;
+      font-size: 20px;
+      line-height: 1.3;
+      font-weight: 600;
+      color: $dark-green;
+      flex: 1;
 
       @media (max-width: 550px) {
-        font-size: 19px;
-        line-height: 23px;
+        font-size: 18px;
       }
     }
 
     .questions-item__body {
       max-height: 0;
-      transition: 0.5s;
-      pointer-events: none;
-      font-size: 18px;
-      line-height: 22px;
+      transition: max-height 0.4s ease, padding 0.3s ease;
       overflow: hidden;
-    }
-
-    .questions-item__body.active {
-      max-height: 900px;
-      opacity: 1;
-      pointer-events: painted;
-      background-color: transparent;
-      max-width: 1130px;
-    }
-
-    .questions__answer {
-      font-size: 20px;
-      line-height: 23px;
-      font-weight: 300;
-      font-family: 'Roboto';
-      padding-bottom: 25px;
-      color: $white;
-      white-space: pre-wrap;
-    }
-
-    .questions__bg {
-      display: none;
+      padding: 0 30px;
 
       &.active {
-        display: block;
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 130px;
-        height: 119px;
+        max-height: 500px;
+        padding: 0 30px 25px;
+
+        @media (max-width: 767px) {
+          padding: 0 25px 20px;
+        }
+      }
+
+      @media (max-width: 767px) {
+        padding: 0 25px;
       }
     }
 
+    .questions__answer {
+      font-size: 16px;
+      line-height: 1.5;
+      font-weight: 400;
+      font-family: 'Roboto', sans-serif;
+      color: rgba($dark-green, 0.8);
+      white-space: pre-wrap;
+      border-top: 1px solid rgba($light-green, 0.3);
+      padding-top: 20px;
+
+      @media (max-width: 550px) {
+        font-size: 15px;
+        padding-top: 15px;
+      }
+    }
+
+    // Удаляем старые фоновые элементы, заменяем на современные
+    .questions__bg,
     .questions-bg-light-2 {
+      display: none;
+    }
+
+    // Добавляем декоративные элементы в стиле streaming
+    .questions__container::before {
+      content: '';
       position: absolute;
-      bottom: 19px;
-      right: 33px;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba($accent-green, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .questions__container::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: -30px;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba($light-green, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
       z-index: 0;
     }
   }
+}
+
+// Анимации появления элементов
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.questions-item {
+  animation: fadeInUp 0.5s ease-out forwards;
+  opacity: 0;
+
+  &:nth-child(1) { animation-delay: 0.1s; }
+  &:nth-child(2) { animation-delay: 0.2s; }
+  &:nth-child(3) { animation-delay: 0.3s; }
+  &:nth-child(4) { animation-delay: 0.4s; }
+  &:nth-child(5) { animation-delay: 0.5s; }
 }

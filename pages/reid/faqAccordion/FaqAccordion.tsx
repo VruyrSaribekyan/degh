@@ -1,20 +1,21 @@
-// 4businessmen/pages/reid/faqAccordion/FaqAccordion.tsx
+
+// FaqAccordion.tsx
 import React, { useState } from 'react'
-import classNames from 'classnames'
-import { questions } from '../questions/Questions'
 import FaqAccordionItem from '../faqAccordionItem/FaqAccordionItem'
-import questionsStyle from '../questions.module.scss'
+import { questions } from '../../../utils/questions'
 
 const FaqAccordion = () => {
   const [clicked, setClicked] = useState('')
+  
   const handleToggle = (index: string) => {
     if (clicked === index) {
       return setClicked('')
     }
     setClicked(index)
   }
+  
   return (
-    <ul className={classNames('questions__list', questionsStyle.questions)}>
+    <ul className='questions__list'>
       {questions.map((question, idx) => (
         <FaqAccordionItem
           key={idx.toString()}

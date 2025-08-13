@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "deploy": "gh-pages -d out",
+    "predeploy": "npm run build"
   },
   "dependencies": {
     "@kinescope/react-kinescope-player": "^0.4.5",
@@ -27,11 +29,10 @@
     "i18next": "^23.12.2",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
-    "next": "^12.2.5",
-    "next-i18next": "^15.3.0",
-    "react": "^17.0.2",
+    "next": "^15.4.6",
+    "react": "^19.1.1",
     "react-datepicker": "^4.5.0",
-    "react-dom": "^17.0.2",
+    "react-dom": "^19.1.1",
     "react-i18next": "^15.0.1",
     "react-in-viewport": "^1.0.0-beta.2",
     "react-input-mask": "^2.0.4",
@@ -42,7 +43,6 @@
     "react-redux": "^7.2.6",
     "react-yandex-maps": "^4.6.0",
     "react-yandex-metrika": "^2.6.0",
-    "sass": "^1.43.2",
     "styled-components": "^6.1.12",
     "swiper": "^11.1.9",
     "typescript": "^4.4.4",
@@ -50,6 +50,8 @@
   },
   "devDependencies": {
     "@types/storybook__react": "^5.2.1",
-    "eslint": "^9.8.0"
+    "eslint": "^9.8.0",
+    "gh-pages": "^6.3.0",
+    "sass": "^1.90.0"
   }
 }

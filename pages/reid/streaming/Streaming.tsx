@@ -2,7 +2,6 @@ import React, { useRef } from 'react'
 import classNames from 'classnames'
 import { useInViewport } from 'react-in-viewport'
 import Image from 'next/image'
-import useClientSide from '../../../hooks/useClientSide'
 import streamingStyle from '../streaming.module.scss'
 
 // Импорт изображений
@@ -10,6 +9,7 @@ import koshik10 from '/assets/images/koshik10.png'
 import koshik010 from '/assets/images/koshik010.png'
 import koshik13 from '/assets/images/koshik13.png'
 import koshik15 from '/assets/images/koshik15.png'
+import useClientSide from '../../../hooks/useClientSide'
 
 // Данные карточек
 const streamingData = [

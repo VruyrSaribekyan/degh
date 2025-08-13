@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 import headerStyle from '../header.module.scss';
 import Image from 'next/image';
-import logo from '/assets/images/logo1.png';
+import logo from '/assets/images/logo.png';
 
 const Header = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <header className={classNames(headerStyle.header)}>
       <div className="header__container container">
@@ -26,20 +32,20 @@ const Header = () => {
           </div>
         </div>
 
-        <nav className="header__nav">
-          <a href="/catalog" className="header__nav-link">
+        <nav className={classNames("header__nav", { "mobile-open": isMobileMenuOpen })}>
+          <a href="/catalog" className="header__nav-link" onClick={() => setIsMobileMenuOpen(false)}>
             <span className="nav-icon">🏥</span>
             Каталог
           </a>
-          <a href="/about" className="header__nav-link">
+          <a href="/about" className="header__nav-link" onClick={() => setIsMobileMenuOpen(false)}>
             <span className="nav-icon">ℹ️</span>
             О нас
           </a>
-          <a href="/delivery" className="header__nav-link">
+          <a href="/delivery" className="header__nav-link" onClick={() => setIsMobileMenuOpen(false)}>
             <span className="nav-icon">🚚</span>
             Доставка
           </a>
-          <a href="/contacts" className="header__nav-link">
+          <a href="/contacts" className="header__nav-link" onClick={() => setIsMobileMenuOpen(false)}>
             <span className="nav-icon">📞</span>
             Контакты
           </a>
@@ -57,20 +63,26 @@ const Header = () => {
           <button className="header__search-btn">
             <span className="search-icon">🔍</span>
           </button>
-          
-          <button className="header__cart-btn">
-            <span className="cart-icon">🛒</span>
-            <span className="cart-count">0</span>
-          </button>
         </div>
 
         {/* Мобильное меню */}
-        <button className="header__mobile-menu">
+        <button 
+          className={classNames("header__mobile-menu", { "active": isMobileMenuOpen })}
+          onClick={toggleMobileMenu}
+        >
           <span className="burger-line"></span>
           <span className="burger-line"></span>
           <span className="burger-line"></span>
         </button>
       </div>
+
+      {/* Mobile overlay */}
+      {isMobileMenuOpen && (
+        <div 
+          className="mobile-overlay" 
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
     </header>
   );
 };
