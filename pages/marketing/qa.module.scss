@@ -1,0 +1,104 @@
+@import './variables';
+
+.qa {
+  padding: 62px 0 70px;
+
+  @media (max-width: 998px) {
+    padding: 40px 0;
+  }
+
+  :global {
+    .qa__header {
+      margin-bottom: 34px;
+    }
+    .qa__list-item {
+      & + & {
+        margin-top: 16px;
+      }
+    }
+    @media (max-width: 998px) {
+      .qa__header {
+        margin-bottom: 30px;
+      }
+      .qa__list-item {
+        & + & {
+          margin-top: 20px;
+        }
+      }
+    }
+    .qa__body {
+      max-width: 940px;
+      margin: 0 auto;
+    }
+    .qa-item {
+      transition: 0.3s;
+      cursor: pointer;
+      border-bottom: 1px solid #afafaf;
+      box-sizing: border-box;
+      overflow: hidden;
+      &__header {
+        display: flex;
+        align-items: center;
+        padding: 15px 0;
+        justify-content: space-between;
+        h3 {
+          font-weight: 500;
+          font-size: 21px;
+          line-height: 120%;
+        }
+        span {
+          display: flex;
+          width: 24px;
+          min-width: 24px;
+          height: 24px;
+          margin-left: 15px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-image: url($slug + 'drop.svg');
+          filter: grayscale(1) brightness(0.01);
+          transform: scale(1, -1);
+          opacity: 0.5;
+          transition: 0.3s;
+        }
+      }
+      &__body {
+        max-height: 0;
+        transition: 0.5s;
+        pointer-events: none;
+        font-size: 18px;
+        line-height: 22px;
+      }
+      &.active {
+        .qa-item__header {
+          span {
+            transform: none;
+            filter: none;
+            opacity: 1;
+          }
+        }
+        .qa-item__body {
+          max-height: 500px;
+          padding-top: 10px;
+          opacity: 1;
+          pointer-events: painted;
+          padding-bottom: 15px;
+          @media (max-width: 998px) {
+            padding-top: 0;
+          }
+        }
+      }
+      @media (max-width: 998px) {
+        &__header {
+          h3 {
+            font-size: 16px;
+          }
+        }
+        &__body {
+          padding-right: 50px;
+          font-size: 14px;
+          line-height: 17px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,205 @@
+@import './variables';
+
+.expert {
+  padding: 70px 0 130px;
+
+  @media (max-width: 1024px) {
+    padding: 30px 0 60px;
+  }
+
+  :global {
+    .expert__slider {
+      position: relative;
+      margin-top: 80px;
+      overflow: hidden;
+
+      @media (max-width: 850px) {
+        margin-top: 40px;
+        padding-bottom: 50px;
+      }
+    }
+
+    .expert__slide {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      @media (max-width: 850px) {
+        flex-direction: column;
+      }
+    }
+
+    .expert__image {
+      width: 49%;
+      max-width: 590px;
+
+      @media (max-width: 850px) {
+        width: 90%;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    }
+
+    .expert__content {
+      width: 50%;
+      max-width: 560px;
+
+      @media (max-width: 850px) {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 30px;
+      }
+    }
+
+    .expert__name {
+      font-size: 45px;
+      line-height: 120%;
+      font-weight: 500;
+      max-width: 252px;
+      color: $color-default-black;
+
+      @media (max-width: 850px) {
+        font-size: 25px;
+      }
+    }
+
+    .expert__features {
+      list-style: disc;
+      margin-top: 29px;
+      font-size: 19px;
+      line-height: 150%;
+      padding-left: 18px;
+
+      @media (max-width: 850px) {
+        font-size: 16px;
+      }
+
+      &-item {
+        & + & {
+          margin-top: 15px;
+        }
+      }
+    }
+
+    .expert__btn-wrapper {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: $color-default-white;
+      z-index: 1;
+
+      @media (max-width: 850px) {
+        top: calc(100% - 28px);
+        right: 50%;
+        transform: translate(50%, 0);
+      }
+    }
+
+    .swiper-wrapper {
+      align-items: flex-start;
+    }
+    .swiper-slide-prev {
+      .swiper-slide-shadow-right {
+        background-image: none;
+      }
+      .swiper-slide-shadow-left {
+        background-image: none;
+      }
+      @media (max-width: 705px) {
+        @media (max-width: 360px) {
+          transform: none !important;
+        }
+      }
+      @media (max-width: 530px) {
+        @media (max-width: 360px) {
+          transform: none !important;
+        }
+      }
+    }
+
+    .swiper-slide-active {
+      transform: none !important;
+      background: #ffffff !important;
+      .swiper-slide-shadow-right {
+        background-image: none;
+      }
+      .swiper-slide-shadow-left {
+        background-image: none;
+      }
+      & .reviews__img {
+        position: absolute;
+        bottom: -35px;
+        right: 30px;
+        display: block;
+        @media (max-width: 705px) {
+          width: 80px;
+          height: 55px;
+          bottom: -15px;
+        }
+      }
+    }
+
+    .swiper-slide-next {
+      @media (max-width: 360px) {
+        transform: none;
+        opacity: 1;
+      }
+      .swiper-slide-shadow-right {
+        background-image: none;
+      }
+      .swiper-slide-shadow-left {
+        background-image: none;
+      }
+      @media (max-width: 705px) {
+        @media (max-width: 360px) {
+          transform: none !important;
+        }
+      }
+      @media (max-width: 530px) {
+        @media (max-width: 360px) {
+          transform: none !important;
+        }
+      }
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      position: static;
+      width: 16px;
+      height: 28px;
+      margin: 0;
+      color: $color-default-black;
+      &:after {
+        display: block;
+        font-size: 28px;
+        width: 16px;
+        height: 28px;
+        background-size: cover !important;
+      }
+    }
+
+    .swiper-slide-duplicate-next {
+      transform: none;
+      .swiper-slide-shadow-right {
+        background-image: none;
+      }
+      .swiper-slide-shadow-left {
+        background-image: none;
+      }
+    }
+
+    .swiper-slide-duplicate-prev {
+      transform: none;
+      .swiper-slide-shadow-right {
+        background-image: none;
+      }
+      .swiper-slide-shadow-left {
+        background-image: none;
+      }
+    }
+  }
+}

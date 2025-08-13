@@ -1,0 +1,8 @@
+{
+  "day": "{count, plural, one {# day} few {# days} many {# days} other {# days}}",
+  "weeks": "{count, plural, one {# week} few {# weeks} many {# weeks} other {# weeks}}",
+  "modules": "{count, plural, one {# модуль} few {# модуля} many {# модулей} other {# модулей}}",
+  "lessons": "{count, plural, one {# урок} few {# урока} many {# уроков} other {# уроков}}",
+  "courseCard.lessons": "{viewedLessonsCount}/{lessonsCount, plural, one {# урок} few {# урока} many {# уроков} other {# уроков}}",
+  "ruble": "{count, plural, one {# рубль} few {# рубля} many {# рублей} other {# рублей}}"
+}

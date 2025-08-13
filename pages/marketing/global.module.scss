@@ -1,0 +1,85 @@
+@import './variables';
+
+.menedger-marketpleysov-a {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  font-family: 'Gilroy', sans-serif;
+  color: #000000;
+  font-size: 20px;
+  box-sizing: border-box;
+
+  :global {
+    .row {
+      display: flex;
+      align-items: center;
+    }
+    .hide {
+      display: none !important;
+    }
+    picture {
+      display: flex;
+      img {
+        max-width: 100%;
+      }
+    }
+    .container {
+      width: 100%;
+      max-width: 1310px;
+      margin: 0 auto;
+      padding: 0 15px;
+      box-sizing: border-box;
+    }
+
+    .section__title {
+      font-weight: 500;
+      font-size: 45px;
+      line-height: 53px;
+      text-align: center;
+
+      @media (max-width: 998px) {
+        font-size: 28px;
+        line-height: 34px;
+      }
+    }
+
+    .section__title_main {
+      font-weight: 600;
+      font-size: 65px;
+      line-height: 125%;
+      text-align: left;
+
+      @media (max-width: 998px) {
+        font-size: 35px;
+        line-height: 125%;
+      }
+    }
+    .accordion {
+      &__trigger {
+        cursor: pointer;
+        &--active {
+          &:after {
+            transform: scaleY(-1);
+          }
+        }
+      }
+      &__panel {
+        max-height: 0px; //change this val basing on innerheight val of the panel which will be individual
+        overflow: hidden;
+        transition: 0.3s ease-out;
+        transition: 0.3s;
+      }
+    }
+
+    .checkout {
+      &__price {
+        display: none;
+        transition: 0.3s all;
+        &--active {
+          display: flex;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

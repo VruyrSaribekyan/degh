@@ -1,0 +1,104 @@
+@import './variables';
+
+.form {
+  margin-top: 22px;
+  @media (max-width: 768px) {
+    margin-top: 20px;
+  }
+
+  :global {
+    .form__input {
+      width: 100%;
+      padding: 14px 25px 12px;
+      background: #ffffff;
+      border: 1px solid #aeaeae;
+      color: $color-default-black;
+      border-radius: 50px;
+      font-size: 14px;
+      line-height: 17px;
+      box-sizing: border-box;
+      &::placeholder {
+        color: #787878;
+      }
+      @media (max-width: 998px) {
+        font-size: 20px;
+      }
+    }
+    .form__trial {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin: 24px 0;
+      @media (max-width: 768px) {
+        margin-bottom: 20px;
+      }
+      &-discount {
+        width: 100%;
+        max-width: 75px;
+        background: linear-gradient(
+          129.72deg,
+          #81f4b4 10.58%,
+          #86c2f4 35.72%,
+          #b3a5fe 67.24%,
+          #f2b0ed 98.6%
+        );
+        border-radius: 100px;
+        text-align: center;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 600;
+        color: white;
+        padding: 8px 8px 9px;
+      }
+      &-price {
+        font-size: 16px;
+        line-height: 20px;
+        margin-left: 40px;
+        color: white;
+        @media (max-width: 750px) {
+          font-size: 14px;
+          line-height: 18px;
+        }
+      }
+      &-note {
+        color: #b3b3b3;
+        font-size: 12px;
+        line-height: 135%;
+        margin-top: 10px;
+      }
+    }
+    .form__input-error {
+      margin-top: 5px;
+      color: red;
+    }
+    .checkbox__text {
+      margin-top: 26px;
+      font-size: 12px;
+      line-height: 15px;
+    }
+    .form__check-label {
+      font-size: 12px;
+      line-height: 15px;
+      color: white;
+    }
+    .form__link {
+      text-decoration: none;
+      color: white;
+    }
+    .form__content {
+      width: 100%;
+    }
+    .form__button {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      margin-top: 25px;
+      font-size: 14px;
+      line-height: 17px;
+      font-weight: 600;
+      padding: 13px 10px 14px;
+      border: none;
+      border-radius: 50px;
+    }
+  }
+}

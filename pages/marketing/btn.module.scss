@@ -1,0 +1,37 @@
+@import './variables';
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
+  border-radius: 11px;
+  color: #ffffff;
+  box-sizing: border-box;
+
+  &:disabled {
+    opacity: 0.5;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+}
+
+.red {
+  background: linear-gradient(167.6deg, #e42c66 -9.78%, #f55b46 107.04%);
+  &:hover {
+    box-shadow: 0px 4px 19px #ff8c90, inset 0px 4px 4px rgba(0, 0, 0, 0);
+  }
+  &:active {
+    box-shadow: 0px 4px 19px #ff8c90, inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+.black {
+  background: #000000;
+  &:hover {
+    box-shadow: 0px 4px 26px #f2b0ed;
+  }
+}

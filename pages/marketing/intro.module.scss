@@ -1,0 +1,268 @@
+@import './variables';
+
+.intro {
+  padding: 22px 0 70px;
+
+  @media (max-width: 998px) {
+    padding: 27px 0 40px;
+  }
+
+  @media (max-width: 850px) {
+    text-align: center;
+  }
+
+  :global {
+    .intro__body {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      background-image: url($slug + 'bg1.jpg');
+      background-size: 100% 60%;
+      background-repeat: no-repeat;
+
+      @media (max-width: 850px) {
+        flex-direction: column;
+      }
+    }
+    .intro__content {
+      width: 100%;
+      &--left {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        max-width: 590px;
+        padding-left: 55px;
+        background: left 150px bottom 20px url($slug + 'img1.png') no-repeat;
+
+        @media (max-width: 1250px) {
+          max-width: 500px;
+          background: left 90px bottom 50px url($slug + 'img1.png') no-repeat;
+          padding-left: 30px;
+        }
+        @media (max-width: 998px) {
+          background: right top url($slug + 'img1.png') no-repeat;
+        }
+      }
+      &--right {
+        max-width: 630px;
+        padding-top: 58px;
+      }
+
+      &-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        @media (max-width: 1250px) {
+          flex-direction: column;
+        }
+
+        &:first-child {
+          margin-bottom: 24px;
+
+          @media (max-width: 998px) {
+            margin-bottom: 14px;
+          }
+        }
+      }
+
+      &-item {
+        width: 100%;
+        max-width: 252px;
+        font-size: 18px;
+        line-height: 22px;
+        padding: 23px 16px 25px 74px;
+        border-radius: 12px;
+        box-shadow: -16px 28px 39px rgba(0, 0, 0, 0.1);
+        background: white top 22px left 23px url($slug + 'bag.svg') no-repeat;
+
+        @media (max-width: 998px) {
+          font-size: 16px;
+        }
+
+        &:nth-child(2) {
+          margin-top: 34px;
+          background: white top 24px left 20px url($slug + 'ndfl.png') no-repeat;
+
+          @media (max-width: 1250px) {
+            margin-left: 83px;
+          }
+
+          @media (max-width: 998px) {
+            margin-top: 14px;
+          }
+        }
+
+        &--black {
+          background: black top 22px left 20px url($slug + 'brain.png')
+            no-repeat;
+          color: white;
+          margin-left: 62px;
+
+          @media (max-width: 1250px) {
+            margin-left: 16px;
+          }
+        }
+      }
+
+      &--mobile {
+        display: none;
+      }
+      &--desc {
+        display: block;
+      }
+    }
+    picture {
+      position: absolute;
+      left: 0;
+      top: 55px;
+      max-width: 45%;
+    }
+    h1 + p {
+      margin-top: 32px;
+    }
+    p {
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 28px;
+    }
+    .row {
+      justify-content: space-between;
+      margin-top: 92px;
+      margin-bottom: 58px;
+      align-items: flex-start;
+
+      p {
+        width: 100%;
+        max-width: 190px;
+        font-size: 18px;
+        line-height: 21px;
+        span {
+          font-weight: 600;
+          font-size: 23px;
+        }
+      }
+      p + p {
+        margin-left: 24px;
+      }
+    }
+    a {
+      width: 176px;
+      height: 58px;
+      font-size: 20px;
+    }
+    @media (max-width: 1250px) {
+      .intro__content {
+        width: 50%;
+        margin-right: 20px;
+      }
+    }
+    @media (max-width: 998px) {
+      .section__title {
+        max-width: 400px;
+      }
+      .row {
+        margin: 50px 0;
+        flex-direction: column;
+
+        p + p {
+          margin: 15px 0 0;
+        }
+      }
+
+      a {
+        max-width: 256px;
+        width: 100%;
+      }
+    }
+    @media (max-width: 850px) {
+      .container {
+        padding: 0;
+      }
+      .intro__body {
+        background-size: 100% 60%;
+      }
+      .intro__content {
+        max-width: 100%;
+        width: 100%;
+        margin-right: 0;
+        padding: 32px 15px 0;
+        box-sizing: border-box;
+
+        &--left {
+          max-width: 300px;
+          margin: 10px auto 0;
+          padding: 186px 5px 0;
+          background: right top url($slug + 'img1.png') no-repeat;
+          background-size: 270px;
+        }
+
+        &-item {
+          max-width: 200px;
+          text-align: left;
+          font-size: 14px;
+          line-height: 17px;
+          padding: 18px 20px 15px 67px;
+          background: white top 16px left 20px url($slug + 'bag.svg') no-repeat;
+          background-size: 34px;
+
+          &:nth-child(2) {
+            max-width: 208px;
+            padding: 19px 10px 15px 68px;
+            background: white top 18px left 14px url($slug + 'ndfl.png')
+              no-repeat;
+            background-size: 34px;
+          }
+
+          &--black {
+            max-width: 208px;
+            padding: 18px 10px 13px 68px;
+            background: black top 17px left 13px url($slug + 'brain.png')
+              no-repeat;
+            background-size: 34px;
+          }
+        }
+        &--mobile {
+          display: block;
+          padding: 35px 15px 0;
+        }
+        &--desc {
+          display: none;
+        }
+      }
+      picture {
+        position: static;
+        max-width: none;
+        margin: 13px -15px 0;
+        justify-content: center;
+      }
+      h1 {
+        margin: 0 auto;
+        text-align: center;
+      }
+      h1 + p {
+        margin-top: 20px;
+      }
+      p {
+        padding: 0 25px;
+        font-size: 21px;
+        line-height: 25px;
+      }
+      .row {
+        flex-direction: column;
+        margin: 22px 0 52px;
+        p {
+          display: block;
+          max-width: 240px;
+          margin: 0 auto;
+        }
+        p + p {
+          margin: 33px auto 0;
+        }
+      }
+      a {
+        margin: 0 auto;
+      }
+    }
+  }
+}

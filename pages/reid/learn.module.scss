@@ -1,0 +1,228 @@
+@import './variables';
+
+.learn {
+  padding: 80px 0 100px;
+  background: linear-gradient(180deg, $white 0%, rgba($light-green, 0.05) 100%);
+  position: relative;
+
+  :global {
+    .learn__container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .learn__title {
+      font-size: 56px;
+      line-height: 1.2;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 60px;
+      color: $dark-green;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+
+      @media (max-width: 767px) {
+        font-size: 32px;
+        margin-bottom: 40px;
+      }
+
+      @media (min-width: 768px) and (max-width: 1023px) {
+        font-size: 44px;
+        margin-bottom: 50px;
+      }
+    }
+
+    .learn__box {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 80px;
+      
+      @media (max-width: 767px) {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 50px;
+      }
+
+      @media (min-width: 768px) and (max-width: 1023px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        margin-bottom: 60px;
+      }
+    }
+
+    .learn__block {
+      background: $white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba($dark-green, 0.08);
+      border: 1px solid rgba($light-green, 0.3);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+
+      &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba($dark-green, 0.15);
+        border-color: $accent-green;
+      }
+
+      &.animate {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 767px) {
+        padding: 25px 20px;
+        border-radius: 16px;
+      }
+    }
+
+    .learn__block-img {
+      text-align: center;
+      margin-bottom: 25px;
+      
+      img {
+        width: 64px;
+        height: 64px;
+        object-fit: contain;
+        padding: 16px;
+        background: rgba($accent-green, 0.1);
+        border-radius: 16px;
+        transition: all 0.3s ease;
+      }
+
+      @media (max-width: 767px) {
+        margin-bottom: 20px;
+        
+        img {
+          width: 56px;
+          height: 56px;
+          padding: 14px;
+        }
+      }
+    }
+
+    .learn__block:hover .learn__block-img img {
+      background: rgba($accent-green, 0.2);
+      transform: scale(1.1);
+    }
+
+    .learn__block-heading {
+      font-size: 20px;
+      line-height: 1.3;
+      font-weight: 700;
+      color: $dark-green;
+      margin-bottom: 15px;
+
+      @media (max-width: 767px) {
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
+    }
+
+    .learn__block-caption {
+      font-size: 16px;
+      line-height: 1.5;
+      color: rgba($dark-green, 0.8);
+      font-weight: 400;
+
+      @media (max-width: 767px) {
+        font-size: 15px;
+      }
+    }
+
+    .learn__bottom {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: center;
+
+      @media (max-width: 767px) {
+        max-width: 100%;
+      }
+    }
+
+    .learn__paragraph {
+      font-size: 32px;
+      line-height: 1.2;
+      font-weight: 600;
+      color: $dark-green;
+      margin-bottom: 20px;
+
+      @media (max-width: 767px) {
+        font-size: 24px;
+        margin-bottom: 15px;
+      }
+    }
+
+    .learn__button-caption {
+      display: inline-block;
+      background: linear-gradient(135deg, $light-green, $accent-green);
+      color: $dark-green;
+      padding: 10px 25px;
+      border-radius: 25px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba($accent-green, 0.3);
+
+      @media (max-width: 767px) {
+        font-size: 13px;
+        padding: 8px 20px;
+        margin-bottom: 15px;
+      }
+    }
+
+    .learn__button {
+      display: inline-block;
+      width: 100%;
+      max-width: 300px;
+      padding: 18px 40px;
+      background: linear-gradient(135deg, $secondary-green, $dark-green);
+      color: $white;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba($dark-green, 0.3);
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba($dark-green, 0.4);
+        background: linear-gradient(135deg, $dark-green, $accent-green);
+      }
+
+      @media (max-width: 767px) {
+        padding: 16px 35px;
+        font-size: 15px;
+        max-width: 280px;
+      }
+    }
+  }
+}
+
+// Простые анимации появления
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.learn__block {
+  &:nth-child(1) { animation: fadeInUp 0.6s ease-out 0.1s forwards; }
+  &:nth-child(2) { animation: fadeInUp 0.6s ease-out 0.2s forwards; }
+  &:nth-child(3) { animation: fadeInUp 0.6s ease-out 0.3s forwards; }
+  &:nth-child(4) { animation: fadeInUp 0.6s ease-out 0.4s forwards; }
+  &:nth-child(5) { animation: fadeInUp 0.6s ease-out 0.5s forwards; }
+  &:nth-child(6) { animation: fadeInUp 0.6s ease-out 0.6s forwards; }
+}

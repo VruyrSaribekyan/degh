@@ -1,0 +1,306 @@
+@import './variables';
+
+.order {
+  padding: 66px 0;
+
+  @media (max-width: 998px) {
+    padding: 40px 0;
+  }
+
+  :global {
+    .order__body {
+      display: flex;
+    }
+    .order__col {
+      width: 50%;
+      box-sizing: border-box;
+
+      &--text {
+        padding: 47px 84px 116px;
+        background: #ffffff;
+        border: 6px solid #000000;
+        border-radius: 20px;
+
+        h2.section__title {
+          font-size: 45px;
+          line-height: 53px;
+          font-weight: 500;
+          text-align: center;
+          margin-bottom: 44px;
+
+          @media (max-width: 850px) {
+            font-size: 40px;
+            line-height: 48px;
+          }
+          @media (max-width: 750px) {
+            font-size: 32px;
+            line-height: 40px;
+          }
+        }
+      }
+      &--form {
+        padding: 45px 68px 40px 57px;
+        background: #000000;
+        border-radius: 20px;
+        color: #ffffff;
+      }
+    }
+
+    .order__tag {
+      border-radius: 100px;
+      background: linear-gradient(
+        129.72deg,
+        rgba(129, 244, 180, 0.2) 10.58%,
+        rgba(134, 194, 244, 0.2) 35.72%,
+        rgba(179, 165, 254, 0.2) 67.24%,
+        rgba(242, 176, 237, 0.2) 98.6%
+      );
+      position: relative;
+      width: 148px;
+      height: 38px;
+      margin-bottom: 28px;
+      &:after {
+        content: 'Демо-доступ';
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 600;
+        background: linear-gradient(
+          129.72deg,
+          #81f4b4 10.58%,
+          #86c2f4 35.72%,
+          #b3a5fe 67.24%,
+          #f2b0ed 98.6%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+    h2.section__title {
+      margin-bottom: 24px;
+      text-align: left;
+      font-size: 40px;
+      line-height: 49px;
+      font-weight: 600;
+      @media (max-width: 750px) {
+        font-size: 36px;
+        line-height: 42px;
+      }
+    }
+    li {
+      position: relative;
+      padding-left: 44px;
+      font-size: 21px;
+      line-height: 120%;
+
+      &::before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 28px;
+        height: 28px;
+
+        background: url($slug + 'check-w.png'),
+          linear-gradient(
+            129.72deg,
+            rgba(129, 244, 180, 0.8) 10.58%,
+            rgba(134, 194, 244, 0.8) 35.72%,
+            rgba(179, 165, 254, 0.8) 67.24%,
+            rgba(242, 176, 237, 0.8) 98.6%
+          );
+        border-radius: 50%;
+        background-position: center;
+        background-repeat: no-repeat;
+        content: '';
+      }
+    }
+    li + li {
+      margin-top: 40px;
+    }
+    .order__item {
+      position: relative;
+      padding-left: 40px;
+      font-size: 16px;
+      line-height: 24px;
+      &::before {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate(0, -50%);
+        width: 24px;
+        height: 24px;
+        background-repeat: no-repeat;
+        background-position: center;
+        content: '';
+      }
+      &:nth-child(n + 2) {
+        margin-left: 50px;
+      }
+      &:nth-child(1)::before {
+        background-image: url($slug + 'order2.svg');
+      }
+      &:nth-child(2)::before {
+        background-image: url($slug + 'order3.svg');
+      }
+    }
+    @media (max-width: 1150px) {
+      .order__col {
+        &--text {
+          padding: 35px 15px;
+        }
+        &--form {
+          padding: 35px 15px;
+        }
+      }
+    }
+    @media (max-width: 998px) {
+      h2.section__title {
+        margin-bottom: 30px;
+      }
+      li {
+        font-size: 16px;
+      }
+      li + li {
+        margin-top: 30px;
+      }
+      .order__item {
+        padding-left: 0;
+        padding-top: 30px;
+        font-size: 14px;
+        line-height: 16px;
+        &::before {
+          position: absolute;
+          left: 50%;
+          top: 0;
+          transform: translate(-50%, 0%);
+        }
+      }
+    }
+    @media (max-width: 750px) {
+      .container {
+        padding: 0;
+      }
+      .order__body {
+        flex-direction: column;
+      }
+      .order__col {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.order2 {
+  :global {
+    .order__body {
+      display: flex;
+      background: #000000;
+      border-radius: 20px;
+    }
+    .order__col {
+      width: 50%;
+      box-sizing: border-box;
+
+      @media (max-width: 750px) {
+        width: 100%;
+      }
+
+      &--text {
+        position: relative;
+        background-color: transparent;
+        picture {
+          position: absolute;
+          left: 15px;
+          top: 55px;
+          img {
+            max-width: none;
+          }
+        }
+      }
+      &--pic {
+        padding: 58px 56px 90px 126px;
+      }
+      &--form {
+        width: 52%;
+        padding: 52px 80px 40px 57px;
+
+        @media (max-width: 850px) {
+          padding: 32px 20px 30px 20px;
+        }
+      }
+    }
+    .md {
+      display: none;
+      justify-content: center;
+    }
+    .lg {
+      display: flex;
+      justify-content: center;
+    }
+    @media (max-width: 1200px) {
+      .order__col {
+        &--text {
+          picture {
+            width: 100%;
+            img {
+              width: 100%;
+              max-width: 100%;
+            }
+          }
+        }
+        &--pic {
+          padding: 52px 0 40px 17px;
+          picture {
+            justify-content: center;
+          }
+        }
+      }
+    }
+    @media (max-width: 998px) {
+      .order__col {
+        &--text {
+          picture {
+            position: static;
+          }
+        }
+      }
+    }
+    @media (max-width: 750px) {
+      .order__body {
+        flex-direction: column-reverse;
+      }
+      .order__col {
+        &--text {
+          width: 100%;
+          padding-bottom: 0;
+          picture {
+            margin-left: -50px;
+            width: auto;
+            margin-bottom: -40px;
+            max-width: none;
+          }
+        }
+        &--form {
+          width: 100%;
+        }
+        &--pic {
+          padding: 22px 15px 20px 15px;
+        }
+      }
+      .md {
+        display: flex;
+        justify-content: center;
+      }
+      .lg {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,115 @@
+.suit {
+  padding: 44px 0;
+  @media (max-width: 998px) {
+    padding: 40px 0;
+  }
+
+  :global {
+    .suit__body {
+      padding: 54px 82px 52px;
+      background: #000000;
+      border-radius: 20px;
+      color: #ffffff;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 35px;
+    }
+    .suit__item p {
+      white-space: pre-wrap;
+    }
+    @media (min-width: 998px) {
+      .suit__items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .suit__item:is(div) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 33%;
+        margin-bottom: 32px;
+      }
+    }
+    .suit__item:is(div) {
+      p {
+        font-size: 22px;
+        line-height: 120%;
+      }
+      picture {
+        position: relative;
+        display: flex;
+        width: 54px;
+        height: 54px;
+        margin: 0 auto 16px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        &::before,
+        &::after {
+          position: absolute;
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          border-radius: 50%;
+          content: '';
+        }
+        &::before {
+          background-color: #ffffff;
+          filter: drop-shadow(0px 0px 33px rgba(232, 255, 244, 0.6));
+        }
+        &::after {
+          background: linear-gradient(
+            129.72deg,
+            rgba(129, 244, 180, 0.4) 10.58%,
+            rgba(134, 194, 244, 0.4) 35.72%,
+            rgba(179, 165, 254, 0.4) 67.24%,
+            rgba(242, 176, 237, 0.4) 98.6%
+          );
+        }
+        img {
+          position: relative;
+          z-index: 1;
+        }
+      }
+    }
+    a {
+      width: 197px;
+      height: 58px;
+      margin: 15px auto 0;
+    }
+
+    .swiper-pagination {
+      position: relative;
+      margin-top: 35px;
+      justify-content: center;
+      .swiper-pagination-bullet {
+        width: 11px;
+        height: 11px;
+        background: #626262;
+        opacity: 1;
+        transition: 0.3s;
+      }
+      .swiper-pagination-bullet + .swiper-pagination-bullet {
+        margin-left: 9px;
+      }
+      .swiper-pagination-bullet-active {
+        background: #ffffff;
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .suit__body {
+        padding: 50px;
+      }
+    }
+    @media (max-width: 998px) {
+      .suit__body {
+        padding: 40px 20px;
+        border-radius: 12px;
+      }
+    }
+  }
+}

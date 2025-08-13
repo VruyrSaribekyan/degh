@@ -1,0 +1,85 @@
+@import './variables';
+
+.pay {
+  padding: 70px 0;
+
+  @media (max-width: 998px) {
+    padding: 40px 0;
+  }
+
+  :global {
+    .pay__body {
+      position: relative;
+    }
+    .picture {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(0, -50%);
+
+      @media (max-width: 1250px) {
+        max-width: 50%;
+      }
+    }
+    .pay__content {
+      max-width: 515px;
+      padding: 120px 0;
+    }
+    h2.section__title {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    p {
+      font-size: 22px;
+      line-height: 120%;
+    }
+    .md {
+      display: none;
+      justify-content: center;
+    }
+    .lg {
+      display: flex;
+    }
+    @media (max-width: 998px) {
+      .pay__content {
+        width: 50%;
+        padding: 60px 0;
+      }
+      h2.section__title {
+        margin-bottom: 20px;
+        text-align: left;
+      }
+      P {
+        font-size: 22px;
+        line-height: 120%;
+      }
+    }
+    @media (max-width: 900px) {
+      h2.section__title {
+        text-align: center;
+        margin-bottom: 0;
+      }
+      .pay__content {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+      }
+      .picture {
+        position: static;
+        transform: none;
+        max-width: 100%;
+        justify-content: center;
+      }
+      P {
+        font-size: 18px;
+      }
+      .md {
+        display: flex;
+        justify-content: center;
+      }
+      .lg {
+        display: none;
+      }
+    }
+  }
+}

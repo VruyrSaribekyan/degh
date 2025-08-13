@@ -1,0 +1,299 @@
+// Variables
+$primary-green: #2d7d32;
+$accent-green: #4caf50;
+$secondary-green: #66bb6a;
+$light-green: #e8f5e8;
+$white: #ffffff;
+$dark-gray: #333333;
+$light-gray: #f8f9fa;
+$border-color: #e0e0e0;
+$shadow-color: rgba(0, 0, 0, 0.1);
+
+.header {
+  background: linear-gradient(135deg, $white 0%, $light-gray 100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 20px $shadow-color;
+  border-bottom: 3px solid $accent-green;
+  backdrop-filter: blur(10px);
+
+  :global {
+    .header__container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px 20px;
+      height: 80px;
+    }
+
+    // Секция логотипа
+    .header__logo-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex: 0 0 auto;
+    }
+
+    .header__logo-link {
+      display: block;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    .header__logo-image {
+      width: auto !important;
+      height: 50px !important;
+      max-width: 160px;
+      object-fit: contain;
+      filter: contrast(1.2) brightness(1.1);
+    }
+
+    .header__brand-text {
+      display: flex;
+      flex-direction: column;
+      
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .header__brand-name {
+      font-size: 24px;
+      font-weight: 700;
+      color: $primary-green;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+    }
+
+    .header__brand-tagline {
+      font-size: 12px;
+      color: #666;
+      font-weight: 400;
+      margin-top: 2px;
+    }
+
+    // Навигация
+    .header__nav {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      
+      @media (max-width: 1024px) {
+        display: none;
+      }
+    }
+
+    .header__nav-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: $dark-gray;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      position: relative;
+
+      &:hover {
+        color: $primary-green;
+        background: $light-green;
+        transform: translateY(-2px);
+      }
+
+      .nav-icon {
+        font-size: 18px;
+        filter: grayscale(0.3);
+      }
+    }
+
+    // Секция действий
+    .header__actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      
+      @media (max-width: 768px) {
+        gap: 10px;
+      }
+    }
+
+    .header__phone {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 15px;
+      background: linear-gradient(135deg, $accent-green, $secondary-green);
+      border-radius: 25px;
+      color: white;
+      
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .phone-icon {
+      font-size: 20px;
+    }
+
+    .phone-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .phone-number {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .phone-text {
+      font-size: 11px;
+      opacity: 0.9;
+    }
+
+    .header__search-btn,
+    .header__cart-btn {
+      position: relative;
+      background: $white;
+      border: 2px solid $border-color;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        border-color: $accent-green;
+        background: $light-green;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+      }
+
+      @media (max-width: 480px) {
+        width: 45px;
+        height: 45px;
+      }
+    }
+
+    .search-icon,
+    .cart-icon {
+      font-size: 20px;
+      
+      @media (max-width: 480px) {
+        font-size: 18px;
+      }
+    }
+
+    .header__cart-btn .cart-count {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: $accent-green;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+    }
+
+    // Мобильное меню
+    .header__mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      background: none;
+      border: none;
+      padding: 8px;
+      cursor: pointer;
+      
+      @media (max-width: 1024px) {
+        display: flex;
+      }
+    }
+
+    .burger-line {
+      width: 25px;
+      height: 3px;
+      background: $primary-green;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+
+      &:nth-child(2) {
+        width: 20px;
+      }
+    }
+
+    .header__mobile-menu:hover .burger-line {
+      background: $accent-green;
+    }
+
+    // Адаптивные стили
+    @media (max-width: 768px) {
+      .header__container {
+        padding: 10px 15px;
+        height: 70px;
+      }
+
+      .header__brand-name {
+        font-size: 20px;
+      }
+
+      .header__logo-image {
+        height: 40px !important;
+        max-width: 140px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header__container {
+        padding: 8px 10px;
+        height: 65px;
+      }
+
+      .header__actions {
+        gap: 8px;
+      }
+
+      .header__logo-image {
+        height: 35px !important;
+        max-width: 120px;
+      }
+    }
+  }
+}
+
+// Анимация появления header
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.header {
+  animation: slideDown 0.5s ease-out;
+}
