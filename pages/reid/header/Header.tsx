@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import headerStyle from '../header.module.scss';
 import Image from 'next/image';
-import logo from '/assets/images/logo.png';
+import logo from '/assets/images/logo1.png';
 
 const Header = () => {
   return (
