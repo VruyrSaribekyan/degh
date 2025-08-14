@@ -1,10 +1,9 @@
 @import './variables';
 
 .instruction {
-  padding: 80px 0;
-  background: linear-gradient(180deg, $white 0%, rgba($light-green, 0.1) 100%); // Легкий зеленый градиент для свежести
+  padding: 80px 0 100px;
+  background: linear-gradient(180deg, $white 0%, rgba($light-green, 0.05) 50%, $white 100%);
   position: relative;
-  overflow: hidden;
 
   :global {
     .instruction__container {
@@ -15,143 +14,203 @@
     }
 
     .instruction__title {
-      font-size: 72px;
-      line-height: 80px;
-      color: $dark-green; // Темно-зеленый для заголовка
-      margin: 0 auto 60px;
-      max-width: 800px;
+      font-size: clamp(32px, 4.5vw, 56px);
+      line-height: 1.2;
+      color: $dark-green;
+      margin: 0 auto;
+      max-width: 900px;
       text-align: center;
       position: relative;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: -0.5px;
 
       @media (max-width: 767px) {
-        font-size: 36px;
-        line-height: 42px;
-        margin-bottom: 40px;
+        margin-bottom: 50px;
+        letter-spacing: 0;
       }
 
-      @media (min-width: 768px) and (max-width: 1023px) {
-        font-size: 48px;
-        line-height: 56px;
-      }
-    }
+      // Подчеркивающая линия
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(90deg, 
+          $accent-green 0%, 
+          $secondary-green 50%, 
+          $light-green 100%);
+        border-radius: 2px;
 
-    .instruction__title-underline {
-      position: absolute;
-      bottom: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 50%;
-      height: auto;
-      opacity: 0.8;
-
-      @media (max-width: 767px) {
-        width: 80%;
-        bottom: -10px;
-      }
-    }
-
-    .instruction__content-box {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      justify-items: center;
-
-      &.triggered {
-        .instruction__block {
-          &:nth-of-type(1):local {
-            animation: fadeInUp 1s 0s ease-out forwards;
-          }
-
-          &:nth-of-type(2):local {
-            animation: fadeInUp 1s 0.3s ease-out forwards;
-          }
-
-          &:nth-of-type(3):local {
-            animation: fadeInUp 1s 0.6s ease-out forwards;
-          }
-
-          &:nth-of-type(4):local {
-            animation: fadeInUp 1s 0.9s ease-out forwards;
-          }
+        @media (max-width: 767px) {
+          bottom: -10px;
+          width: 60px;
+          height: 2px;
         }
       }
     }
 
+    // Скрываем старые декоративные изображения
+    .instruction__title-img,
+    .instruction__title-img-2 {
+      display: none;
+    }
+
+    .instruction__content-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      justify-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      counter-reset: step;
+
+      @media (max-width: 767px) {
+        gap: 25px;
+        grid-template-columns: 1fr;
+      }
+
+      @media (min-width: 1024px) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      @media (min-width: 768px) and (max-width: 1023px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     .instruction__block {
-      max-width: 300px;
+      max-width: 320px;
+      width: 100%;
       text-align: center;
       background: $white;
-      border-radius: 20px;
-      padding: 30px 20px;
-      box-shadow: 0 4px 12px rgba($dark-green, 0.1); // Легкая зеленая тень
-      opacity: 0;
-      transform: translateY(50px);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba($light-green, 0.2);
+      border-radius: 16px;
+      padding: 35px 25px;
+      box-shadow: 
+        0 2px 12px rgba($dark-green, 0.06),
+        0 1px 3px rgba($dark-green, 0.04);
+      transition: all 0.3s ease;
+      position: relative;
+      
+      // ВАЖНО: Убираем opacity: 0 и делаем блоки видимыми по умолчанию
+      opacity: 1;
+      transform: translateY(0);
+      
+      // Анимация появления только если есть класс triggered
+      animation: none;
+
+      // Номер шага
+      &::before {
+        content: counter(step);
+        counter-increment: step;
+        position: absolute;
+        top: -12px;
+        left: 25px;
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(135deg, $secondary-green, $accent-green);
+        color: $white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 700;
+        box-shadow: 0 2px 8px rgba($secondary-green, 0.3);
+      }
 
       &:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 8px 20px rgba($accent-green, 0.2);
+        transform: translateY(-5px);
+        box-shadow: 
+          0 8px 25px rgba($dark-green, 0.1),
+          0 3px 8px rgba($accent-green, 0.08);
+        border-color: rgba($accent-green, 0.3);
+
+        .instruction__block-img img {
+          transform: scale(1.05);
+        }
+      }
+
+      @media (max-width: 767px) {
+        padding: 30px 20px;
+        max-width: 100%;
+      }
+    }
+
+    // Анимация только при срабатывании триггера
+    .instruction__content-box.triggered {
+      .instruction__block {
+        // Сначала скрываем для анимации
+        opacity: 1;
+        transform: translateY(40px);
+        
+        &:nth-of-type(1) {
+          animation: slideInUp 0.6s 0.1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        &:nth-of-type(2) {
+          animation: slideInUp 0.6s 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        &:nth-of-type(3) {
+          animation: slideInUp 0.6s 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        &:nth-of-type(4) {
+          animation: slideInUp 0.6s 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
       }
     }
 
     .instruction__block-img {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
+      
       img {
-        border-radius: 50%; // Круглые иконки для современного вида
-        background: rgba($accent-green, 0.1); // Легкий зеленый фон
-        padding: 10px;
+        width: 100% !important;
+        height: 80px !important;
+        object-fit: contain;
+        border-radius: 12px;
+        background: linear-gradient(135deg, 
+          rgba($light-green, 0.1) 0%, 
+          rgba($accent-green, 0.05) 100%);
+        padding: 12px;
+        transition: transform 0.3s ease;
+
+        @media (max-width: 767px) {
+          width: 100% !important;
+          padding: 10px;
+        }
       }
     }
 
     .instruction__block-text {
-      font-size: 20px;
-      line-height: 28px;
+      font-size: 16px;
+      line-height: 1.5;
       font-weight: 400;
-      color: $dark-green;
+      color: rgba($dark-green, 0.9);
+      margin: 0;
 
       span {
-        font-weight: 700;
-        color: $secondary-green; // Акцент на ключевых словах
+        font-weight: 600;
+        color: $secondary-green;
       }
 
       @media (max-width: 767px) {
-        font-size: 18px;
-        line-height: 24px;
+        font-size: 15px;
+        line-height: 1.4;
       }
-    }
-
-    // Убраны ненужные absolute элементы, добавлены псевдо-элементы для декора если нужно
-    .instruction__container::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100px;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba($light-green, 0.3) 0%, transparent 100%);
-      opacity: 0.5;
-    }
-
-    .instruction__container::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      right: -100px;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba($accent-green, 0.3) 0%, transparent 100%);
-      opacity: 0.5;
     }
   }
 }
 
-@keyframes fadeInUp {
+// Анимация появления
+@keyframes slideInUp {
   0% {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(40px);
   }
   100% {
     opacity: 1;

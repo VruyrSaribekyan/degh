@@ -4,6 +4,14 @@ import { useInViewport } from 'react-in-viewport'
 import Image from 'next/image'
 import learnStyle from '../learn.module.scss'
 
+// Import images from assets
+import koshik141 from '/assets/images/koshik141.png'
+import koshik01 from '/assets/images/koshik_01.png'
+import koshik04 from '/assets/images/koshik_04.png'
+import koshik05 from '/assets/images/koshik_05.png'
+import koshik06 from '/assets/images/koshik_06.png'
+import koshik08 from '/assets/images/koshik_08.png'
+
 const Learn = () => {
   const containerRef = useRef<HTMLDivElement>(null)
   const { enterCount } = useInViewport(containerRef, { threshold: 0.2 })
@@ -19,7 +27,7 @@ const Learn = () => {
           <div className={classNames('learn__block', { 'animate': enterCount > 0 })}>
             <div className='learn__block-img'>
               <Image
-                src='/images/koshik141.png'
+                src={koshik141}
                 alt='Ընտրել դեղամիջոցներ'
                 width={64}
                 height={64}
@@ -38,7 +46,7 @@ const Learn = () => {
           <div className={classNames('learn__block', { 'animate': enterCount > 0 })}>
             <div className='learn__block-img'>
               <Image
-                src='/images/koshik_01.png'
+                src={koshik01}
                 alt='Պահպանել որակը'
                 width={64}
                 height={64}
@@ -57,7 +65,7 @@ const Learn = () => {
           <div className={classNames('learn__block', { 'animate': enterCount > 0 })}>
             <div className='learn__block-img'>
               <Image
-                src='/images/koshik_04.png'
+                src={koshik04}
                 alt='Համատեղել արդյունավետություն'
                 width={64}
                 height={64}
@@ -75,7 +83,7 @@ const Learn = () => {
           <div className={classNames('learn__block', { 'animate': enterCount > 0 })}>
             <div className='learn__block-img'>
               <Image
-                src='/images/koshik_05.png'
+                src={koshik05}
                 alt='Անհատական ծրագիր'
                 width={64}
                 height={64}
@@ -93,7 +101,7 @@ const Learn = () => {
           <div className={classNames('learn__block', { 'animate': enterCount > 0 })}>
             <div className='learn__block-img'>
               <Image
-                src='/images/koshik_06.png'
+                src={koshik06}
                 alt='Բուժական կուրս'
                 width={64}
                 height={64}
@@ -111,7 +119,7 @@ const Learn = () => {
           <div className={classNames('learn__block', { 'animate': enterCount > 0 })}>
             <div className='learn__block-img'>
               <Image
-                src='/images/koshik_08.png'
+                src={koshik08}
                 alt='Որակ և մատչելիություն'
                 width={64}
                 height={64}

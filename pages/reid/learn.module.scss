@@ -60,8 +60,11 @@
       box-shadow: 0 4px 15px rgba($dark-green, 0.08);
       border: 1px solid rgba($light-green, 0.3);
       transition: all 0.3s ease;
-      opacity: 0;
-      transform: translateY(30px);
+      // Убираем скрытые блоки по умолчанию
+      opacity: 1;
+      transform: translateY(0);
+      // Добавляем анимацию появления
+      animation: fadeInUp 0.6s ease-out backwards;
 
       &:hover {
         transform: translateY(-8px);
@@ -69,6 +72,7 @@
         border-color: $accent-green;
       }
 
+      // Оставляем класс animate для JS управления если нужно
       &.animate {
         opacity: 1;
         transform: translateY(0);
@@ -85,12 +89,11 @@
       margin-bottom: 25px;
       
       img {
-        width: 64px;
-        height: 64px;
+        width: 100%;
         object-fit: contain;
-        padding: 16px;
+        padding: 20px;
         background: rgba($accent-green, 0.1);
-        border-radius: 16px;
+        border-radius: 20px;
         transition: all 0.3s ease;
       }
 
@@ -98,9 +101,17 @@
         margin-bottom: 20px;
         
         img {
-          width: 56px;
-          height: 56px;
-          padding: 14px;
+          width: 100%;
+          padding: 18px;
+          border-radius: 18px;
+        }
+      }
+
+      @media (min-width: 768px) and (max-width: 1023px) {
+        img {
+          width: 100%;
+          padding: 19px;
+          border-radius: 19px;
         }
       }
     }
@@ -148,7 +159,7 @@
       font-size: 32px;
       line-height: 1.2;
       font-weight: 600;
-      color: $dark-green;
+      color: white;
       margin-bottom: 20px;
 
       @media (max-width: 767px) {
@@ -206,7 +217,7 @@
   }
 }
 
-// Простые анимации появления
+// Анимация появления
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -218,11 +229,12 @@
   }
 }
 
+// Задержки анимации для каждого блока
 .learn__block {
-  &:nth-child(1) { animation: fadeInUp 0.6s ease-out 0.1s forwards; }
-  &:nth-child(2) { animation: fadeInUp 0.6s ease-out 0.2s forwards; }
-  &:nth-child(3) { animation: fadeInUp 0.6s ease-out 0.3s forwards; }
-  &:nth-child(4) { animation: fadeInUp 0.6s ease-out 0.4s forwards; }
-  &:nth-child(5) { animation: fadeInUp 0.6s ease-out 0.5s forwards; }
-  &:nth-child(6) { animation: fadeInUp 0.6s ease-out 0.6s forwards; }
+  &:nth-child(1) { animation-delay: 0.1s; }
+  &:nth-child(2) { animation-delay: 0.2s; }
+  &:nth-child(3) { animation-delay: 0.3s; }
+  &:nth-child(4) { animation-delay: 0.4s; }
+  &:nth-child(5) { animation-delay: 0.5s; }
+  &:nth-child(6) { animation-delay: 0.6s; }
 }

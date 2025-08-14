@@ -87,15 +87,11 @@ const Intro: React.FC = () => {
           <h3 className={introStyle['intro__description-title']}>
             ՄԻՋԱԶԳԱՅԻՆ ՈՐԱԿ ԵՎ ԵՐԱՇԽԻՔ
           </h3>
+  
           <p className={introStyle['intro__description-text']}>
-            ԱՐԴՅՈՒՆԱՎԵՏ ԵՎ ԱՆՎՏԱՆԳ ԲՈՒԺՈՒՄ
+          ՀԱԿԱՔԱՂՑԿԵՂԱՅԻՆ ԴԵՂԱՄԻՋՈՑՆԵՐԻ ԼԱՅ ՏԵՍԱԿԱՆԻ 
           </p>
-          <p className={introStyle['intro__description-text']}>
-            ԼԱՅ ՏԵՍԱԿԱՆԻ ՀԱԿԱՔԱՂՑԿԵՂԱՅԻՆ ԴԵՂԱՄԻջՈՑՆԵՐ
-          </p>
-          <p className={introStyle['intro__description-text']}>
-            Առողջություն և որակյալ կյանք յուրաքանչյուր հիվանդի համար
-          </p>
+
         </div>
 
         {/* Дополнительные преимущества для мобильных */}
