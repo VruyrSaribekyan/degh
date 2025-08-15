@@ -13,7 +13,7 @@ import treatmentImg from '/assets/images/botas_1.png';
 const Intro: React.FC = () => {
   const isClientSide = useClientSide();
   const [isAnimated, setIsAnimated] = useState(false);
-  
+
   // Один реф для всей секции
   const sectionRef = useRef<HTMLElement>(null);
   const { inViewport } = useInViewport(sectionRef, { threshold: 0.2 });
@@ -25,27 +25,16 @@ const Intro: React.FC = () => {
   }, [inViewport, isAnimated]);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className={classNames(introStyle.intro, {
         [introStyle.animated]: isAnimated
       })}
     >
       <div className={introStyle.intro__container}>
-        
-        {/* Главный заголовок */}
-        <div className={classNames(introStyle.intro__heading, introStyle.intro__animated)}>
-          <span className={introStyle['intro__heading-span-1']}>
-            ՆՈՐԱԳՈՒՅՆ ԴԵՂՈՐԱՅՔ
-          </span>
-          <span className={introStyle['intro__heading-span-2']}>
-            ՄԱՏՉԵԼԻ ԳՆԵՐՈՎ
-          </span>
-        </div>
 
-        {/* Основной контент */}
         <div className={classNames(introStyle.intro__content, introStyle.intro__animated)}>
-          
+
           {/* Левая колонка - Статистика */}
           <div className={introStyle['intro__weeks-box']}>
             <div className={introStyle.intro__weeks}>
@@ -58,18 +47,28 @@ const Intro: React.FC = () => {
 
           {/* Центральная колонка - Кнопка */}
           <div className={introStyle['intro__button-block']}>
-            <a 
-              href="https://degh.am" 
+            <a
+              href="tel:+37433770393"
               className={introStyle.intro__button}
-              target="_blank"
-              rel="noopener noreferrer"
             >
-              ՊԱՏՎԻՐԵԼ ՀԻՄԱ
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{ marginRight: '8px' }}
+              >
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.81.37 1.6.73 2.33a2 2 0 0 1-.45 2.18l-1.27 1.27a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.18-.45c.73.36 1.52.61 2.33.73A2 2 0 0 1 22 16.92z" />
+              </svg>
+              ԶԱՆԳԱՀԱՐԵԼ ՀԻՄԱ
             </a>
-            <div className={introStyle['intro__button-caption']}>
-              ԱՆՎՃԱՐ ԽՈՐՀՐԴԱՏՎՈՒԹՅՈՒՆ
-            </div>
           </div>
+
 
           {/* Правая колонка - Статистика */}
           <div className={introStyle['intro__lessons-box']}>
@@ -87,9 +86,9 @@ const Intro: React.FC = () => {
           <h3 className={introStyle['intro__description-title']}>
             ՄԻՋԱԶԳԱՅԻՆ ՈՐԱԿ ԵՎ ԵՐԱՇԽԻՔ
           </h3>
-  
+
           <p className={introStyle['intro__description-text']}>
-          ՀԱԿԱՔԱՂՑԿԵՂԱՅԻՆ ԴԵՂԱՄԻՋՈՑՆԵՐԻ ԼԱՅ ՏԵՍԱԿԱՆԻ 
+            ՀԱԿԱՔԱՂՑԿԵՂԱՅԻՆ ԴԵՂԱՄԻՋՈՑՆԵՐԻ ԼԱՅ ՏԵՍԱԿԱՆԻ
           </p>
 
         </div>
@@ -104,7 +103,7 @@ const Intro: React.FC = () => {
               ԲԱՐՁՐՈՐԱԿ ԴԵՂԱՄԻՋՈՑՆԵՐԻ ՆԵՐՄՈՒԾՈՒՄ
             </div>
           </div>
-          
+
           <div className={introStyle['intro__feature-item']}>
             <div className={introStyle['intro__feature-title']}>
               Մասնագիտական
@@ -119,7 +118,7 @@ const Intro: React.FC = () => {
         {isClientSide && isAnimated && (
           <>
             <div className={classNames(
-              introStyle.intro__decoration, 
+              introStyle.intro__decoration,
               introStyle['intro__decoration--tiktok']
             )}>
               <Image
@@ -134,7 +133,7 @@ const Intro: React.FC = () => {
             </div>
 
             <div className={classNames(
-              introStyle.intro__decoration, 
+              introStyle.intro__decoration,
               introStyle['intro__decoration--youtube']
             )}>
               <Image
@@ -149,7 +148,7 @@ const Intro: React.FC = () => {
             </div>
 
             <div className={classNames(
-              introStyle.intro__decoration, 
+              introStyle.intro__decoration,
               introStyle['intro__decoration--twitch']
             )}>
               <Image

@@ -159,17 +159,9 @@ const Header = () => {
             </div>
 
             <nav className={classNames("header__nav", { "mobile-open": isMobileMenuOpen })}>
-              <Link href="/catalog" className="header__nav-link" onClick={() => setIsMobileMenuOpen(false)}>
-                <span className="nav-icon">🏥</span>
-                Կատալոգ
-              </Link>
               <Link href="/about" className="header__nav-link" onClick={() => setIsMobileMenuOpen(false)}>
                 <span className="nav-icon">ℹ️</span>
                 Մեր մասին
-              </Link>
-              <Link href="/delivery" className="header__nav-link" onClick={() => setIsMobileMenuOpen(false)}>
-                <span className="nav-icon">🚚</span>
-                Առաքում
               </Link>
               <Link href="/contacts" className="header__nav-link" onClick={() => setIsMobileMenuOpen(false)}>
                 <span className="nav-icon">📞</span>

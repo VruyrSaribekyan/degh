@@ -22,6 +22,7 @@ import Streaming from './streaming/Streaming'
 import Learn from './learn/Learn'
 import Instruction from './instruction/Instruction'
 import Questions from './Questions'
+import CallButton from '../../components/CallButton/CallButton'
 
 const Page: NextPage = () => {
   return (
@@ -45,6 +46,7 @@ const Page: NextPage = () => {
             <Instruction />
             <Questions />
           </main>
+          <CallButton />
         </div>
       </Layout>
     </IntlProvider>

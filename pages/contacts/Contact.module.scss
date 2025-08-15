@@ -1,0 +1,507 @@
+// Contact.module.scss
+
+.contactContainer {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8fffe 0%, #e8f5f3 100%);
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  
+    @media (max-width: 768px) {
+      padding: 0 15px;
+    }
+  }
+  
+  // Hero Section
+  .heroSection {
+    background: linear-gradient(135deg, #2d8659 0%, #34a169 100%);
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1.5" fill="rgba(255,255,255,0.08)"/></svg>') repeat;
+      animation: float 15s infinite linear;
+    }
+  
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-100px) rotate(360deg); }
+    }
+  }
+  
+  .heroContent {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .heroTitle {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
+  }
+  
+  .heroSubtitle {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0;
+    font-weight: 300;
+  }
+  
+  .heroDecor {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+    z-index: 1;
+  
+    @media (max-width: 968px) {
+      display: none;
+    }
+  }
+  
+  .contactIcon {
+    font-size: 8rem;
+    opacity: 0.2;
+    animation: bounce 2s infinite;
+  
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+  }
+  
+  // Contact Info Section
+  .contactInfoSection {
+    padding: 100px 0;
+    background: white;
+  }
+  
+  .contactGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+  
+  .contactCards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+  
+  .contactCard {
+    background: #f8fffe;
+    padding: 30px 25px;
+    border-radius: 16px;
+    border: 2px solid #e1f0ed;
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #2d8659, #34a169);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+  
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(45, 134, 89, 0.15);
+      border-color: #2d8659;
+  
+      &::before {
+        transform: scaleX(1);
+      }
+    }
+  }
+  
+  .cardIcon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: block;
+  }
+  
+  .cardTitle {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2d8659;
+    margin-bottom: 12px;
+  }
+  
+  .cardContent {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  
+    a {
+      color: #2d8659;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+  
+      &:hover {
+        color: #34a169;
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  .cardExtra {
+    font-size: 0.85rem;
+    color: #999;
+    font-style: italic;
+  
+    span {
+      background: rgba(45, 134, 89, 0.1);
+      padding: 4px 8px;
+      border-radius: 12px;
+      color: #2d8659;
+    }
+  }
+  
+  // Form Section
+  .formSection {
+    position: sticky;
+    top: 20px;
+  
+    @media (max-width: 1024px) {
+      position: static;
+    }
+  }
+  
+  .formCard {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(45, 134, 89, 0.1);
+    border: 1px solid #e1f0ed;
+  
+    @media (max-width: 768px) {
+      padding: 30px 20px;
+    }
+  }
+  
+  .formTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2d8659;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .formDescription {
+    color: #666;
+    text-align: center;
+    margin-bottom: 30px;
+    line-height: 1.5;
+  }
+  
+  .contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .formRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .formLabel {
+    font-weight: 600;
+    color: #2d8659;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+  }
+  
+  .formInput,
+  .formSelect,
+  .formTextarea {
+    padding: 12px 16px;
+    border: 2px solid #e1f0ed;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+  
+    &:focus {
+      outline: none;
+      border-color: #2d8659;
+      box-shadow: 0 0 0 3px rgba(45, 134, 89, 0.1);
+    }
+  
+    &::placeholder {
+      color: #999;
+    }
+  }
+  
+  .formTextarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+  }
+  
+  .formSelect {
+    cursor: pointer;
+  
+    option {
+      padding: 8px;
+    }
+  }
+  
+  .submitButton {
+    background: linear-gradient(135deg, #2d8659, #34a169);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(45, 134, 89, 0.3);
+    }
+  
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+  
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  
+    &.submitting {
+      background: #999;
+    }
+  }
+  
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  }
+  
+  .successMessage {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  .errorMessage {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-size: 0.95rem;
+  }
+  
+  // Section Title
+  .sectionTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2d8659;
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+  
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #2d8659, #34a169);
+      border-radius: 2px;
+    }
+  
+    @media (max-width: 768px) {
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+  }
+  
+  // Map Section
+  .mapSection {
+    padding: 80px 0;
+    background: #f8fffe;
+  }
+  
+  .mapContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    height: 400px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(45, 134, 89, 0.1);
+  }
+  
+  .mapPlaceholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #e8f5f3, #d1ede7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #2d8659;
+    font-weight: 600;
+  
+    p {
+      font-size: 1.2rem;
+      margin: 10px 0 5px 0;
+    }
+  
+    span {
+      font-size: 0.9rem;
+      color: #666;
+    }
+  }
+  
+  .mapIcon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    opacity: 0.8;
+  }
+  
+  // Branch Section
+  .branchSection {
+    padding: 80px 0;
+    background: white;
+  }
+  
+  .branchGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+  }
+  
+  .branchCard {
+    background: #f8fffe;
+    padding: 30px;
+    border-radius: 16px;
+    border: 2px solid #e1f0ed;
+    transition: all 0.3s ease;
+  
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(45, 134, 89, 0.1);
+      border-color: #2d8659;
+    }
+  }
+  
+  .branchHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e1f0ed;
+  }
+  
+  .branchName {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2d8659;
+    margin: 0;
+  }
+  
+  .branchStatus {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  
+  .branchInfo {
+    margin-bottom: 20px;
+  
+    p {
+      margin: 8px 0;
+      color: #555;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+  
+  .branchFeatures {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .feature {}

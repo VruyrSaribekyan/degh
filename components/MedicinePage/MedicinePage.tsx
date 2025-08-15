@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 import Head from 'next/head';
 import styles from './MedicinePage.module.scss';
 import { medicinesData } from '../../pages/reid/header/Header';
@@ -10,7 +9,7 @@ const MedicinePage = () => {
   const { id } = router.query;
   const [activeTab, setActiveTab] = useState('info');
   const [quantity, setQuantity] = useState(1);
-
+//@ts-ignore
   const medicine = medicinesData.find(med => med.id === parseInt(id));
 
   if (!medicine) {

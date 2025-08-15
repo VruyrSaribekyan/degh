@@ -1,5 +1,4 @@
-@import './variables';
-
+@use './variables' as *;
 .program {
   padding-top: 60px;
   padding-bottom: 65px;

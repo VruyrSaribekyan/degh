@@ -1,5 +1,4 @@
-@import './variables';
-
+@use './variables' as *;
 .order {
   padding-top: 60px;
   padding-bottom: 60px;

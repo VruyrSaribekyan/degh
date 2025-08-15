@@ -1,5 +1,4 @@
-@import './variables';
-
+@use './variables' as *;
 .reviews {
   padding-top: 60px;
   padding-bottom: 110px;
